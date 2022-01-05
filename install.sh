@@ -89,7 +89,6 @@ function setup_duplexer {
   exit 0
 }
 
-clear
 if [ $(whoami) == root ]
 then
   echo
