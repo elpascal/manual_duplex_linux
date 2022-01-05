@@ -75,9 +75,9 @@ function setup_duplexer {
   echo '*cupsFilter: "application/vnd.cups-pdf 0 duplex_print_filter"' >> /etc/cups/ppd/Manual_Duplexer_$first_printer.ppd
 
 
-  sleep 1
-
   service cups restart
+
+  sleep 1
 
   #add duplexing printer
   lpadmin -p Manual_Duplexer_$first_printer -E -v duplex-print:$first_printer -P /etc/cups/ppd/Manual_Duplexer_$first_printer.ppd
