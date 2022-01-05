@@ -1,5 +1,8 @@
 #!/bin/bash
-all_printers=$(lpstat -s | tail +2 | awk '{print $3}' | sed 's/.$//')
+
+#all_printers=$(lpstat -s | tail +2 | awk '{print $3}' | sed 's/.$//')
+all_printers=$(lpstat -s | tail +2 | awk '{print $3}')
+
 
 echo
 echo "These are your installed printers:"
@@ -57,7 +60,7 @@ function setup_duplexer {
   chown root:root /usr/lib/cups/backend-available/duplex-print
   chmod 700 /usr/lib/cups/backend-available/duplex-print
 
-  echo "Deleting printer if already exists"
+  echo "Deleting Manual_Duplexer_$first_printer if already exists"
   lpadmin -x Manual_Duplexer_$first_printer
 
   cp -praf /etc/cups/ppd/$first_printer.ppd /etc/cups/ppd/Manual_Duplexer_$first_printer.ppd
